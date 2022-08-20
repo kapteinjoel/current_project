@@ -1,0 +1,56 @@
+#: import NoTransition kivy.uix.screenmanager.NoTransition
+#: import SlideTransition kivy.uix.screenmanager.SlideTransition
+
+DisplayManager:
+    Title:
+    Game:
+<User_Create>:
+    name: 'User_Create'
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: 'Username:'
+        TextInput:
+            id: input
+        Button:
+            text: 'Create'
+            on_press:
+                root.create()
+
+<Title>:
+    name: 'Title'
+    FloatLayout:
+        size: root.width, root.height
+        Label:
+            color: 1,1,1,1
+            font_size: dp(100)
+            pos_hint: {'center_x': .5, 'center_y': .8}
+            text: 'Logo'
+        Button:
+            size_hint: None, None
+            size: root.width/10, root.width/15
+            font_size: self.width/10
+            font_name: 'Assets/Fonts/Daydream.ttf'
+            pos_hint: {'center_x': .5, 'center_y': .55}
+            text: 'PLAY'
+            on_press:
+                root.manager.transition = NoTransition()
+                app.root.current = 'Game'
+        Button:
+            size_hint: None, None
+            size: root.width/10, root.width/15
+            font_size: self.width/10
+            font_name: 'Assets/Fonts/Daydream.ttf'
+            pos_hint: {'center_x': .5, 'center_y': .35}
+            text: 'Settings'
+        Button:
+            size_hint: None, None
+            size: root.width/10, root.width/15
+            font_size: self.width/10
+            font_name: 'Assets/Fonts/Daydream.ttf'
+            pos_hint: {'center_x': .5, 'center_y': .15}
+            text: 'Exit'
+            on_press:
+                app.stop()
+<Game>:
+    name: 'Game'
